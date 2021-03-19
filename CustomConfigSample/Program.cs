@@ -9,9 +9,15 @@ namespace CustomConfigSample
     {
         static async Task Main(string[] args)
         {
-            // receives the config file name
-            CustomConfig<MyConfig> config = new(Path.Combine(Environment.CurrentDirectory, args[0]));
+            string Filename;
+            
+            // if no filename is received set a default one
+            Filename = (args.Length == 0) ? "myconfig.json" : args[0];
+            
+            // create a new configuration object and load it
+            CustomConfig<MyConfig> config = new(Path.Combine(Environment.CurrentDirectory, Filename));
             bool loaded = await config.LoadConfigAsync();
+
             Console.WriteLine($"Configuration loaded: {loaded}");
             Console.ReadKey();
         }
