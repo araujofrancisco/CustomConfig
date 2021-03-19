@@ -11,11 +11,19 @@ namespace CustomConfig
         private string Filename { get; set; }
         public TConfig Settings { get; set; }
 
+        /// <summary>
+        /// Constructor receives the configuration file name.
+        /// </summary>
+        /// <param name="Filename">Name of the file for configuration.</param>
         public CustomConfig(string Filename)
         {
             this.Filename = Filename;
         }
 
+        /// <summary>
+        /// Loads the configuration file asynchronously. A new configuration file is created if it does not exists.
+        /// </summary>
+        /// <returns>Returns true if it was able to load a configuration file.</returns>
         public async Task<bool> LoadConfigAsync()
         {
             bool retVal = false;
@@ -45,6 +53,10 @@ namespace CustomConfig
             return retVal;
         }
 
+        /// <summary>
+        /// Saves configuration to a file asynchronously. The file will be created if it does not exists.
+        /// </summary>
+        /// <returns>Returns true if it was able to save the configuration.</returns>
         public async Task<bool> SaveConfigAsync()
         {
             bool retVal = false;
