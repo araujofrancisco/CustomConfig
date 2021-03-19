@@ -1,8 +1,9 @@
 ﻿using System;
 using System.IO;
 using System.Threading.Tasks;
+using CustomConfig;
 
-namespace CustomConfig
+namespace CustomConfigSample
 {
     class Program
     {
