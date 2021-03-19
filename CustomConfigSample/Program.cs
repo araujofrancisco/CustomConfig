@@ -17,8 +17,12 @@ namespace CustomConfigSample
             // create a new configuration object and load it
             CustomConfig<MyConfig> config = new(Path.Combine(Environment.CurrentDirectory, Filename));
             bool loaded = await config.LoadConfigAsync();
-
             Console.WriteLine($"Configuration loaded: {loaded}");
+
+            config.Settings.Data.Add(new() { Filename = "test.dat", ApiEntryPoint = "api/test/uploadtest" });
+            bool saved = await config.SaveConfigAsync();
+            Console.WriteLine($"Configuration saved: {saved}");
+
             Console.ReadKey();
         }
     }
